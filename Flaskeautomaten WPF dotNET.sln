@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flaskeautomaten WPF dotNET", "Flaskeautomaten WPF dotNET\Flaskeautomaten WPF dotNET.csproj", "{AD9A9A10-FF7E-4672-BC0E-52951641A332}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD9A9A10-FF7E-4672-BC0E-52951641A332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9A9A10-FF7E-4672-BC0E-52951641A332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9A9A10-FF7E-4672-BC0E-52951641A332}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9A9A10-FF7E-4672-BC0E-52951641A332}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B666C811-2D24-4F8C-8032-8EF9BED7345A}
+	EndGlobalSection
+EndGlobal
