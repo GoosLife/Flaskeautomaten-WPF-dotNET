@@ -1,18 +1,11 @@
 ﻿using Flaskeautomaten_WPF_dotNET.Backend;
+using Flaskeautomaten_WPF_dotNET.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Flaskeautomaten_WPF_dotNET
@@ -22,27 +15,31 @@ namespace Flaskeautomaten_WPF_dotNET
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ViewModel ViewModel { get; private set; } = new ViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = ViewModel;
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(UpdateGUI);
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 25);
-            timer.Start();
-        }
+            // Create labels for each product type
+            List<Label> consumerLabels = new List<Label>();
 
-        private void UpdateGUI(object sender, EventArgs e)
-        {
-            string bottleTypesString = "";
-            foreach (string type in Flaskeautomat.Instance.BottleTypes)
+            for (int i = 0; i < Flaskeautomat.Instance.BottleTypes.Count; i++)
             {
-                bottleTypesString += type;
-                bottleTypesString += '\n';
-            }
-            tbBottleTypes.Text = bottleTypesString;
+                // ViewModel.ConsumerBufferValueIndexes[Flaskeautomat.Instance.BottleTypes[i]] = i;
+                ViewModel.ConsumerBufferValues.Add(0);
 
-            lblProducer.Content = "Flasker: " + Flaskeautomat.Instance.Buffer.Count;
+                // Create new label for each bottle type
+                Binding labelBinding = new Binding("ConsumerBufferValues[" + i + "]") { Source = ViewModel.ConsumerBufferValues[i] };
+                Label label = new Label()
+                {
+                    Name = $"lbl{Flaskeautomat.Instance.BottleTypes[i]}",
+                    Content = labelBinding.Source,
+                    Margin = new Thickness(0, 0, 0, 0)
+                };
+                consumerLabels.Add(label);
+                Grid.Children.Add(label);
+            }
         }
     }
 }

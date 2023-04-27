@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,10 +16,7 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
 
         private static readonly Lazy<Flaskeautomat> flaskeautomat = new Lazy<Flaskeautomat>(() => new Flaskeautomat());
         public static Flaskeautomat Instance => flaskeautomat.Value;
-        private Flaskeautomat() 
-        {
-            Init();
-        }
+        private Flaskeautomat() {}
 
         // End of singleton implementation
 
@@ -29,7 +27,7 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
         public List<Consumer> Consumers = new List<Consumer>();
         public Producer Producer = new Producer();
 
-        private void Init()
+        public void Init()
         {
             Splitter = new Splitter();
 
@@ -54,6 +52,11 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
             Consumers.Add(c);
 
             ThreadPool.QueueUserWorkItem(c.Consume);
+        }
+
+        public bool IsInitialized()
+        {
+            return flaskeautomat == null;
         }
     }
 }

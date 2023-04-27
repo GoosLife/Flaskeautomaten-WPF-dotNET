@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,6 +25,7 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
                 }
 
                 Flaskeautomat.Instance.Buffer.Add(b);
+                MainWindow.ViewModel.ProducerBufferCount = Flaskeautomat.Instance.Buffer.Count;
 
                 Thread.Sleep(rng.Next(500, 2000)); // Sleep for a random amount of time between 0.5 and 2 seconds
             }

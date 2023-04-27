@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace Flaskeautomaten_WPF_dotNET.Backend
 {
-    internal class Consumer
+    public class Consumer
     {
         public string Type { get; set; }
         public CancellationToken CancellationToken { get; private set; } = new CancellationTokenSource().Token;

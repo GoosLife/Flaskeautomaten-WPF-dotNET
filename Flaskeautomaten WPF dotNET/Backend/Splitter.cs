@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 
 namespace Flaskeautomaten_WPF_dotNET.Backend
@@ -19,6 +22,9 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
             {
                 Bottle b = Flaskeautomat.Instance.Buffer.Take();
                 Buffers[b.Type].Add(b);
+                int viewModelIndex = Flaskeautomat.Instance.BottleTypes.IndexOf(b.Type);
+                MainWindow.ViewModel.ConsumerBufferValues[viewModelIndex] = Buffers[b.Type].Count;
+                MainWindow.ViewModel.OnPropertyChanged($"ConsumerBufferValues[{viewModelIndex}]");
                 Thread.Sleep(rng.Next(500,2000));
             }
         }

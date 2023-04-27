@@ -203,6 +203,7 @@
     </Compile>
     <Compile Include="Backend\Bottle.cs" />
     <Compile Include="Backend\Consumer.cs" />
+    <Compile Include="Backend\ErrorHandling\FailedToInitializeFlaskeautomatException.cs" />
     <Compile Include="Backend\Flaskeautomat.cs" />
     <Compile Include="Backend\Producer.cs" />
     <Compile Include="Backend\Splitter.cs" />
@@ -212,6 +213,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ViewModel.cs" />
+    <Compile Include="ObservableDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
