@@ -30,8 +30,8 @@ namespace Flaskeautomaten_WPF_dotNET.Model
 
         // public Dictionary<string, int> ConsumerBufferValueIndexes = new Dictionary<string, int>();
 
-        private ObservableCollection<int> consumerBufferValues = new ObservableCollection<int>();
-        public ObservableCollection<int> ConsumerBufferValues
+        private string consumerBufferValues = "";
+        public string ConsumerBufferValues
         {
             get
             {
@@ -41,6 +41,16 @@ namespace Flaskeautomaten_WPF_dotNET.Model
             {
                 consumerBufferValues = value;
                 OnPropertyChanged("ConsumerBufferValues");
+            }
+        }
+
+        public void UpdateConsumerBufferValues()
+        {
+            ConsumerBufferValues = "";
+
+            foreach (string type in Flaskeautomat.Instance.BottleTypes)
+            {
+                ConsumerBufferValues += $"{type}: {Flaskeautomat.Instance.Splitter.Buffers[type].Count}\n";
             }
         }
 

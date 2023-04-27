@@ -30,7 +30,5 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
                 Thread.Sleep(rng.Next(500, 2000)); // Sleep for a random amount of time between 0.5 and 2 seconds
             }
         }
-
-
     }
 }

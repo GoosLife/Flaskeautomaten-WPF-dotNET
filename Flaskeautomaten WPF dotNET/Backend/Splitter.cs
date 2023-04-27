@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
+using System.Windows;
 
 namespace Flaskeautomaten_WPF_dotNET.Backend
 {
@@ -16,15 +17,14 @@ namespace Flaskeautomaten_WPF_dotNET.Backend
 
         public Splitter() {}
 
-        public void Split(object obj)
+        public async void Split(object obj)
         {
             while (!CancellationToken.IsCancellationRequested)
             {
                 Bottle b = Flaskeautomat.Instance.Buffer.Take();
-                Buffers[b.Type].Add(b);
-                int viewModelIndex = Flaskeautomat.Instance.BottleTypes.IndexOf(b.Type);
-                MainWindow.ViewModel.ConsumerBufferValues[viewModelIndex] = Buffers[b.Type].Count;
-                MainWindow.ViewModel.OnPropertyChanged($"ConsumerBufferValues[{viewModelIndex}]");
+                Buffers[b.Type].Append(b);
+                MainWindow.ViewModel.ProducerBufferCount = Flaskeautomat.Instance.Buffer.Count;
+                MainWindow.ViewModel.UpdateConsumerBufferValues();
                 Thread.Sleep(rng.Next(500,2000));
             }
         }

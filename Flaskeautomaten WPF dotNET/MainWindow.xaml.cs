@@ -20,26 +20,6 @@ namespace Flaskeautomaten_WPF_dotNET
         {
             InitializeComponent();
             DataContext = ViewModel;
-
-            // Create labels for each product type
-            List<Label> consumerLabels = new List<Label>();
-
-            for (int i = 0; i < Flaskeautomat.Instance.BottleTypes.Count; i++)
-            {
-                // ViewModel.ConsumerBufferValueIndexes[Flaskeautomat.Instance.BottleTypes[i]] = i;
-                ViewModel.ConsumerBufferValues.Add(0);
-
-                // Create new label for each bottle type
-                Binding labelBinding = new Binding("ConsumerBufferValues[" + i + "]") { Source = ViewModel.ConsumerBufferValues[i] };
-                Label label = new Label()
-                {
-                    Name = $"lbl{Flaskeautomat.Instance.BottleTypes[i]}",
-                    Content = labelBinding.Source,
-                    Margin = new Thickness(0, 0, 0, 0)
-                };
-                consumerLabels.Add(label);
-                Grid.Children.Add(label);
-            }
         }
     }
 }

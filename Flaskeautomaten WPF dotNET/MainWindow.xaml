@@ -12,9 +12,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Margin="350,158,350,184" Background="#FF00A7FF">
             <Label Content="Splitter" Margin="-1,1,1,-1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="621,140,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="621,191,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="621,232,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path=ConsumerBufferValues}" Name="lblConsumerBufferValues" HorizontalAlignment="Left" Margin="622,192,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
